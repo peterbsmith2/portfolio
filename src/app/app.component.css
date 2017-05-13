@@ -24,3 +24,9 @@ footer {
     right: 0;
     font-size: 4px;
 }
+
+.arrows {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
