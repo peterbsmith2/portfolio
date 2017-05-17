@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/delay';
+import 'rxjs/add/operator/debounce';
+import 'rxjs/add/observable/timer';
 import 'rxjs/add/observable/interval';
 import 'rxjs/add/observable/fromEvent';
 
@@ -23,9 +26,24 @@ export class AppComponent implements OnInit {
       });
 
     Observable.fromEvent(document, 'keydown')
-    .filter((e: KeyboardEvent) =>  e.keyCode <= 40 && e.keyCode >= 37 )
-    .subscribe((e: KeyboardEvent)=> console.log(e.keyCode));
+      .filter((e: KeyboardEvent) =>  e.keyCode <= 40 && e.keyCode >= 37 )
+      .map((e: KeyboardEvent)=>{
+        this.arrows[e.key.toLowerCase()] = true;
+        return e;
+      })
+      .delay(150)
+      .subscribe((e: KeyboardEvent)=>{
+        this.arrows[e.key.toLowerCase()] = false;
+      });
   }
+
+  arrows = {
+    arrowup: false,
+    arrowright: false,
+    arrowdown: false,
+    arrowleft: false
+  }
+
 
   oxymorons = [
     'Moral Scoundrel',
