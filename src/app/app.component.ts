@@ -46,13 +46,14 @@ export class AppComponent implements OnInit {
 
 
   oxymorons = [
+    'Unknowingly Self-Aware',
     'Moral Scoundrel',
     'Outgoing Introversion',
     'Rough Gentleman',
     'Ignorant Intellect',
     'Largely Minimal',
     'Scatter Precision',
-    'Secluded Extraversion'
+    'Closeted Extraversion'
   ]
 
   oxymoron = ''
