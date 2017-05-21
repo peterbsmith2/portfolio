@@ -51,9 +51,3 @@ footer {
   right: 50px;
   bottom: 0px;
 }
-
-.active {
-  background: linear-gradient(
-                     rgba(20,20,20, .5), 
-                     rgba(20,20,20, .5));
-}
