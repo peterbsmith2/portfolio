@@ -1,22 +1,3 @@
-div {
-  position:absolute;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-  overflow:hidden;
-}
-
-h1 {
-  text-transform: uppercase;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  height: 100%;
-}
-
 footer {
     position: absolute;
     bottom: 0;
@@ -27,27 +8,24 @@ footer {
 
 .up-arrow {
   position: absolute;
-  right: 25px;
-  bottom: 25px;
-  transform: rotate(90deg);
+  right: 30px;
+  bottom: 30px;
 }
 
 .right-arrow {
   position: absolute;
-  right: 0px;
-  bottom: 0px;
-  transform: rotate(180deg);
+  right: 5px;
+  bottom: 5px;
 }
 
 .down-arrow {
   position: absolute;
-  right: 25px;
-  bottom: 0px;
-  transform: rotate(-90deg);
+  right: 30px;
+  bottom: 5px;
 }
 
 .left-arrow {
   position: absolute;
-  right: 50px;
-  bottom: 0px;
+  right: 55px;
+  bottom: 5px;
 }

@@ -6,14 +6,19 @@ import {
   animate,
   transition
 } from '@angular/animations';
+
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/delay';
-import 'rxjs/add/operator/debounce';
-import 'rxjs/add/observable/timer';
-import 'rxjs/add/observable/interval';
 import 'rxjs/add/observable/fromEvent';
+
+export class Arrows {
+  arrowup: string;
+  arrowright: string;
+  arrowdown: string;
+  arrowleft: string;
+}
 
 @Component({
   selector: 'app-root',
@@ -38,12 +43,6 @@ export class AppComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    let randomNumber = this.getRandomNumber();
-    Observable.interval(randomNumber)
-      .subscribe((i) => {
-        randomNumber = this.getRandomNumber();
-        this.oxymoron = this.oxymorons[i % this.oxymorons.length]
-      });
 
     Observable.fromEvent(document, 'keydown')
       .filter((e: KeyboardEvent) => e.keyCode <= 40 && e.keyCode >= 37 )
@@ -57,30 +56,11 @@ export class AppComponent implements OnInit {
       });
   }
 
-  arrows = {
+  arrows: Arrows = {
     arrowup: "inactive",
     arrowright: "inactive",
     arrowdown: "inactive",
     arrowleft: "inactive"
-  }
-
-
-  oxymorons = [
-    'Dimly Shrewd',
-    'Unknowingly Self-Aware',
-    'Moral Scoundrel',
-    'Outgoing Introversion',
-    'Rough Gentleman',
-    'Ignorant Intellect',
-    'Largely Minimal',
-    'Scatter Precision',
-    'Closeted Extraversion'
-  ]
-
-  oxymoron = ''
-
-  getRandomNumber() {
-    return 750 * (1 + Math.random());
   }
 
 }
