@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/interval';
+import { routerTransition } from '../router.animations';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  animations: [routerTransition()],
+  host: {'[@routerTransition]': ''}
 })
 
 export class HomeComponent implements OnInit {
@@ -33,7 +36,7 @@ export class HomeComponent implements OnInit {
     'Closeted Extraversion'
   ]
 
-  oxymoron: string = ''
+  oxymoron: string = this.oxymorons[0];
 
   getRandomNumber(): number {
     return 750 * (1 + Math.random());

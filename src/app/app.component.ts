@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   trigger,
   state,
@@ -40,20 +41,39 @@ export class Arrows {
 })
 export class AppComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
+
+  isPasswordRoute() {
+    return this.router.url === '/password';
+  }
 
   ngOnInit() {
 
-    Observable.fromEvent(document, 'keydown')
-      .filter((e: KeyboardEvent) => e.keyCode <= 40 && e.keyCode >= 37 )
-      .map((e: KeyboardEvent)=>{
-        this.arrows[e.key.toLowerCase()] = "active";
-        return e;
-      })
-      .delay(150)
-      .subscribe((e: KeyboardEvent)=>{
-        this.arrows[e.key.toLowerCase()] = "inactive";
-      });
+    let keydown$ = Observable.fromEvent(document, 'keydown');
+
+    keydown$
+    .filter((e: KeyboardEvent) => e.keyCode === 37 )
+    .subscribe((e: KeyboardEvent)=>{
+      let nextRoute;
+      this.isPasswordRoute() ? nextRoute = '/home' : nextRoute = '/password';
+      this.router.navigate([nextRoute]);
+    })
+
+    let arrowKey$ = keydown$.filter((e: KeyboardEvent) => e.keyCode <= 40 && e.keyCode >= 37);
+
+    arrowKey$
+    .subscribe((e: KeyboardEvent) => {
+      this.arrows[e.key.toLowerCase()] = "active";
+    });
+
+    arrowKey$
+    .delay(150)
+    .subscribe((e: KeyboardEvent)=>{
+      this.arrows[e.key.toLowerCase()] = "inactive";
+    });
+
   }
 
   arrows: Arrows = {
