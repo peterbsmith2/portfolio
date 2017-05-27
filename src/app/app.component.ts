@@ -12,6 +12,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/delay';
+import 'rxjs/add/operator/do';
 import 'rxjs/add/observable/fromEvent';
 
 export class Arrows {
@@ -61,14 +62,20 @@ export class AppComponent implements OnInit {
       this.router.navigate([nextRoute]);
     })
 
-    let arrowKey$ = keydown$.filter((e: KeyboardEvent) => e.keyCode <= 40 && e.keyCode >= 37);
-
-    arrowKey$
-    .subscribe((e: KeyboardEvent) => {
+    keydown$.filter((e: KeyboardEvent) => e.keyCode <= 40 && e.keyCode >= 37)
+    .do((e: KeyboardEvent) => {
       this.arrows[e.key.toLowerCase()] = "active";
+    })
+    .delay(150)
+    .subscribe((e: KeyboardEvent)=>{
+      this.arrows[e.key.toLowerCase()] = "inactive";
     });
 
-    arrowKey$
+    keydown$.filter((e: KeyboardEvent) => e.keyCode <= 40 && e.keyCode >= 37)
+    .map((e: KeyboardEvent) => {
+      this.arrows[e.key.toLowerCase()] = "active";
+      return e;
+    })
     .delay(150)
     .subscribe((e: KeyboardEvent)=>{
       this.arrows[e.key.toLowerCase()] = "inactive";
