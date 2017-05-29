@@ -57,16 +57,6 @@ export class AppComponent implements OnInit {
       this.arrows[e.key.toLowerCase()] = "inactive";
     });
 
-    keydown$.filter((e: KeyboardEvent) => e.keyCode <= 40 && e.keyCode >= 37)
-    .map((e: KeyboardEvent) => {
-      this.arrows[e.key.toLowerCase()] = "active";
-      return e;
-    })
-    .delay(150)
-    .subscribe((e: KeyboardEvent)=>{
-      this.arrows[e.key.toLowerCase()] = "inactive";
-    });
-
   }
 
   arrows: Arrows = {
