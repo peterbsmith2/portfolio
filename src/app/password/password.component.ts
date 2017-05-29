@@ -12,6 +12,14 @@ export class PasswordComponent implements OnInit {
 
   constructor() { }
 
+  flipped: Boolean = false;
+
+  flip(password: string): void {    
+    if (password === "swordfish") {
+      this.flipped = !this.flipped;
+    }
+  }
+
   ngOnInit() {
   }
 
