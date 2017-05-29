@@ -46,8 +46,16 @@ export class AppComponent implements OnInit {
     private router: Router
   ) { }
 
+  SWIPE_ACTION = { LEFT: 'swipeleft', RIGHT: 'swiperight' };
+
   isPasswordRoute() {
     return this.router.url === '/password';
+  }
+
+  nextPage() {
+    let nextRoute;
+    this.isPasswordRoute() ? nextRoute = '/home' : nextRoute = '/password';
+    this.router.navigate([nextRoute]);
   }
 
   ngOnInit() {
@@ -56,11 +64,7 @@ export class AppComponent implements OnInit {
 
     keydown$
     .filter((e: KeyboardEvent) => e.keyCode === 37 )
-    .subscribe((e: KeyboardEvent)=>{
-      let nextRoute;
-      this.isPasswordRoute() ? nextRoute = '/home' : nextRoute = '/password';
-      this.router.navigate([nextRoute]);
-    })
+    .subscribe(() => this.nextPage());
 
     keydown$.filter((e: KeyboardEvent) => e.keyCode <= 40 && e.keyCode >= 37)
     .do((e: KeyboardEvent) => {

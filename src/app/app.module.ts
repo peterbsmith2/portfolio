@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -9,7 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { PasswordComponent } from './password/password.component';
-
 
 
 @NgModule({
@@ -26,7 +25,10 @@ import { PasswordComponent } from './password/password.component';
     AppRoutingModule,
     MdInputModule, 
   ],
-  providers: [],
+  providers: [{ 
+      provide: HAMMER_GESTURE_CONFIG, 
+      useClass: HammerGestureConfig 
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

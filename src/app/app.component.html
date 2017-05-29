@@ -1,6 +1,8 @@
-<router-outlet></router-outlet>
-
-<footer>oxymorons by Peter B Smith and Sarika Shah</footer>
+<div 
+  (swipeleft)="nextPage()"
+  >
+  <router-outlet></router-outlet>
+</div>
 <img [@animationState]="arrows.arrowup" src="assets/arrow.png" class="up-arrow" alt="">
 <img [@animationState]="arrows.arrowright" src="assets/arrow.png" class="right-arrow" alt="">
 <img [@animationState]="arrows.arrowdown" src="assets/arrow.png" class="down-arrow" alt="">
