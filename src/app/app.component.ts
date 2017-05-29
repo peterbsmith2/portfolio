@@ -43,10 +43,10 @@ export class AppComponent implements OnInit {
     let keydown$ = Observable.fromEvent(document, 'keydown');
 
     keydown$
-    .filter((e: KeyboardEvent) => e.keyCode === 37 )
+    .filter((e: KeyboardEvent) => e.keyCode === 37 && e.shiftKey)
     .subscribe(() => this.nextPage());
 
-    keydown$.filter((e: KeyboardEvent) => e.keyCode <= 40 && e.keyCode >= 37)
+    keydown$.filter((e: KeyboardEvent) => e.shiftKey && (e.keyCode <= 40 && e.keyCode >= 37))
     .do((e: KeyboardEvent) => {
       this.arrows[e.key.toLowerCase()] = "active";
     })
