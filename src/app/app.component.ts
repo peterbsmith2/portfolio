@@ -28,8 +28,6 @@ export class AppComponent implements OnInit {
     private router: Router
   ) { }
 
-  SWIPE_ACTION = { LEFT: 'swipeleft', RIGHT: 'swiperight' };
-
   isPasswordRoute() {
     return this.router.url === '/password';
   }
