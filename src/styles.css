@@ -38,3 +38,7 @@ body{
   display: flex;
   justify-content: center;
 }
+
+input {
+  font-size: 16px !important;
+}
