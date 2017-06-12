@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    let randomNumber = this.getRandomNumber();
+    let randomNumber: number = this.getRandomNumber();
     Observable.interval(randomNumber)
       .subscribe((i) => {
         randomNumber = this.getRandomNumber();
@@ -25,14 +25,16 @@ export class HomeComponent implements OnInit {
   }
 
   oxymorons: Array<string> = [
+    'Mythic Scientist',
+    'Falsely Honest',
     'Dimly Shrewd',
     'Unknowingly Self-Aware',
     'Moral Scoundrel',
     'Outgoing Introversion',
-    'Rough Gentleman',
+    'Rough-Around-The-Edges Gentleman',
     'Ignorant Intellect',
     'Largely Minimal',
-    'Scatter Precision',
+    'Precisely Scattered',
     'Closeted Extraversion'
   ]
 
