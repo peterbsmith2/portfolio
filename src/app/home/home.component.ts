@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
     'Outgoing Introversion',
     'Rough-Around-The-Edges Gentleman',
     'Ignorant Intellect',
-    'Largely Minimal',
+    'Minimally Large',
     'Precisely Scattered',
     'Closeted Extraversion'
   ]
