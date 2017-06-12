@@ -17,7 +17,7 @@ export class SecretFormComponent implements OnInit {
 
   stretch(phoneNumber) {
     this.stretched === 'false' ? this.stretched = 'true' : this.stretched = 'false';
-    this.http.post('https://az10lxlraj.execute-api.us-east-2.amazonaws.com/dev/send', {
+    this.http.post('https://x71pyj2jj6.execute-api.us-east-2.amazonaws.com/dev/send', {
       to: phoneNumber
     }).subscribe();
   }
